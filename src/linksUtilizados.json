@@ -1,0 +1,12 @@
+{
+"Consumo de API usando React - Projeto Completo": {
+    "Como guardar as informações da consulta da api dentro de um objeto pra manipular no front": "https://www.origamid.com/curso/react-completo/0302-useeffect-1",
+    "Qual sintaxe e como importar o useState?": "https://pt-br.reactjs.org/docs/hooks-state.html",
+    "Como consumir uma array e ir mostrando elementos de forma dinâmica na tela": "https://www.youtube.com/watch?v=5s8Ol9uw-yM",
+    "Posso colocar className em um react fragment?": "Não, se for usar classname, use div ao invés de react fragment. Fonte:https://stackoverflow.com/questions/49069746/workaround-to-add-classname-to-fragment-in-react#:~:text=If%20you%20need%20to%20add,the%20class%20to%20its%20parent.&text=Using%20Fragment%20means%20not%20adding,ll%20have%20to%20use%20div%20.",
+    "Qual comando eu uso pra puxar dados de uma api?": "Fetch, joga o valor dentro de uma variavel ou estado, e manipula. Fonte: https://www.origamid.com/curso/react-completo/0302-useeffect-1",
+    "Como faço pra ler o json que retorna da api para eu mostrar no front": "Coloca toda a resposta do objeto dentro de uma variavel, dá um console log nela, No chrome: inspecionar elemento>console, procura alguma array, clica nela, e veja como a resposta vem. A partir dai, vc acessa com ponto ou colchete, vai testando e vendo que o front mostra.",
+    "Como faço pra meu código de CHAMADA DA API não dê bug?": "Coloca ele dentro de um useEffect, e coloque pra executar apenas uma vez quando o componente for montado. Dessa forma vc não fica dando loop infinito na api.",
+    "Antes de executar um map, o que eu preciso executar?": "Uma checagem pra ver se aquele objeto existe. Exemplo: objeto &&, e depois, seu código, assim evita crashes."
+  }
+}
