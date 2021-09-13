@@ -1,4 +1,5 @@
-/* Recebe uma array + faz um loop por cada um dos itens, mostrando na tela */
+/*
+// Recebe uma array + faz um loop por cada um dos itens, mostrando na tela
 const counters = ['counter1', 'counter2']
 
 const mapping = (array) => {
@@ -8,19 +9,17 @@ const mapping = (array) => {
   return array
 }
 
-/*
 //Remover o primeiro e retornar ele.
 const drinks = ['Milk', 'Water', 'Tea']
 console.log(`Array drinks = ${drinks}`)
-removeFirst = drinks.shift()
-console.log(`removeFirst = ${removeFirst}`)
-console.log(``)
+let removeFirst = drinks.shift()
+console.log(`removeFirst = ${removeFirst}`); console.log(``)
 
 
 //Remover o último e retornar ele.
 const drinks2 = ['Milk', 'Water', 'Tea']
 console.log(`Array drinks = ${drinks2}`)
-removeLast = drinks2.pop()
+let removeLast = drinks2.pop()
 console.log(`removeLast = ${removeLast}`)
 console.log(``)
 
@@ -31,11 +30,11 @@ console.log(`A receita básica usa: ${cachorroQuente}`)
 console.log(``)
 
 //Remove 1 do final + adiciona 2 no final
-const cafeComLeite = ['xícara', 'suco de laranja']
-ingredienteErrado = cafeComLeite.pop('suco de laranja')
+const cafeComLeite = ['xícara', 'suco de laranja', 'açúcar']
+let ingredienteErrado = cafeComLeite.splice(1,1)
 console.log(`O ingrediente que não vai no café com leite é: ${ingredienteErrado}`)
 cafeComLeite.push('leite', 'cafe')
-qtdeItens = cafeComLeite.length
+let qtdeItens = cafeComLeite.length
 console.log(`Pra fazer café com leite você precisa de: ${cafeComLeite}`)
 console.log(`Quantidade de itens: ${qtdeItens}`)
 console.log(``)
@@ -45,7 +44,7 @@ console.log(``)
 const restauranteSushi = ['okami', 'akami', 'mizuho', 'pizzaria tchelo']
 restauranteSushi.splice(3,1)
 console.log(`Restaurantes de sushi: ${restauranteSushi}`)
-restauranteSushi.shift('okami')
+restauranteSushi.shift()
 restauranteSushi.push('okami')
 console.log(`Os melhores restaurantes em ordem são: ${restauranteSushi}`)
 console.log(``)
@@ -146,7 +145,7 @@ console.log (notUnderage)
 // Adicione o campo avaliação com valor em branco [Precisa transformar em objeto]
 // No início do nome de cada uma, coloque: Cerveja. Exemplo: Cerveja Baly
 
-/*
+
 const cervejas = ['Baly', 'Brahma', 'Itaipava', 'Ales', 'Jurupinga', 'Cantina do Vale', 'Amstel']
 
 // 1
@@ -166,14 +165,14 @@ const cervejasApenas = cervejas.filter(checkBeer)
 console.log(''); console.log(`##### 3-Depois do filter ####`); console.log(cervejasApenas);
 
 // 2 - Transforme a array de string em array de objeto + Coloque cerveja no início no nome da cerveja + adicione um campo avaliação com valor em branco
-const beersObject = cervejasApenas.map((array) => {
+const beersObject = cervejasApenas.map((cerveja) => {
   return { 
-    Nome: 'Cerveja ' + array,
+    Nome: 'Cerveja ' + cerveja,
     Avaliacao: ''
   }
 })
 console.log(''); console.log(`####### 4-Depois do map ##### `); console.log(beersObject); console.log('')
-*/
+
 
 
 module.exports = mapping
