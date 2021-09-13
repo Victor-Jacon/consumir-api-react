@@ -76,7 +76,7 @@ const concatStrings2 = companies.map(company => `${company.name} [${company.star
 console.log(concatStrings2)
 */
 
-
+/*
 // 7-A Usando Maps aninhados
 // Se a empresa for de tecnologia, adicione o campo owner: jeff bezos, caso contrário, adicione owner: ''
 // Se a empresa tiver menos de 5 anos, adicione o campo tipo: startup, caso contrário, adicione tipo: 'normal company'
@@ -108,3 +108,53 @@ const techStartups2 = companies
   .map(company => (company.end - company.start <= 5) && {...company, type: 'startup'} || {...company, type: 'normal company'})
 
 console.log(techStartups2)
+*/
+
+/*
+// 8-A Organize as empresas da array companies pela data de criação ela.
+// O método sort itera de uma forma diferente, ele pega 2 itens da array, compara, e retorna 1 ou -1
+// Se retornar 1, ele sobe na ordenação, fica em primeiro
+// Se retornar -1, ele desce, vai pro final
+
+const sortedCompanies = companies.sort((c1, c2) => {
+  if (c1.start > c2.start) {
+    return 1
+  }
+  else {
+    return -1
+  }
+})
+
+console.log(sortedCompanies)
+
+
+// 8-B Sintaxe reduzida
+const sortedCompanies2 = companies.sort((c1, c2) => (c1.start > c2.start) && 1 || -1)
+console.log(sortedCompanies2)
+
+// 8-C Sintaxe reduzida
+const sortedCompanies3 = companies.sort((c1, c2) => (c1.start > c2.start) ? 1 : -1)
+console.log(sortedCompanies3)
+*/
+
+/*
+// 9- Como usar o método sort para organizar de forma rapida uma array de numeros ou letras
+companies.sort((a,b) => a - b) // Do menor para o maior
+companies.sort((a,b) => b - a) // Do maior para o menor
+*/
+
+// 10-A Como funciona o método reduce
+const ages2 = [5, 15, 16, 20, 25, 40, 55, 43, 32, 52]
+
+let ageSum = ages2.reduce((total, age) => {
+  return total + age
+}, 0)
+
+console.log(ageSum)
+
+// 10-B Como funciona o método reduce
+const ages3 = [5, 15, 16, 20, 25, 40, 55, 43, 32, 52]
+
+let ageSum2 = ages3.reduce((total, age) => total + age, 0)
+
+console.log(ageSum2)
