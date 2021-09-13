@@ -51,7 +51,8 @@ console.log(`Os melhores restaurantes em ordem são: ${restauranteSushi}`)
 console.log(``)
 */
 
-// Ordem a array de objetos de acordo com a melhor avaliação
+/*
+// Ordene a array de objetos de acordo com a melhor avaliação
 const pizzarias = [
   {
     Nome: 'Ravenna',
@@ -123,6 +124,56 @@ pizzarias.sort((a,b) => {
 console.log(`Ordenando da mais próxima para a mais distante:`)
 console.log(pizzarias)
 console.log(``)
+*/
+
+/*
+// Remova as idades abaixo de 18 anos
+const ages = [32, 33, 16, 40];
+console.log('Antes de remover')
+console.log (ages)
+
+function checkAdult(age) {
+  return age >= 18;
+}
+
+const notUnderage = ages.filter(checkAdult)    // Returns [32, 33, 40]
+
+console.log('Depois de remover')
+console.log (notUnderage)
+*/
+
+// Remova as bebidas que não são cervejas
+// Adicione o campo avaliação com valor em branco [Precisa transformar em objeto]
+// No início do nome de cada uma, coloque: Cerveja. Exemplo: Cerveja Baly
+
+/*
+const cervejas = ['Baly', 'Brahma', 'Itaipava', 'Ales', 'Jurupinga', 'Cantina do Vale', 'Amstel']
+
+// 1
+console.log('########### Primeira Etapa ########### ')
+checkBeer = (beer) => {
+  
+  console.log(''); console.log('Valor recebido função checkBeer'); console.log(beer); 
+
+  if (beer != 'Cantina do Vale' && beer != 'Jurupinga') {
+    return true
+  }
+}
+
+console.log(`##### 1-Lista antes do filter ######`); console.log(cervejas);
+
+const cervejasApenas = cervejas.filter(checkBeer)
+console.log(''); console.log(`##### 3-Depois do filter ####`); console.log(cervejasApenas);
+
+// 2 - Transforme a array de string em array de objeto + Coloque cerveja no início no nome da cerveja + adicione um campo avaliação com valor em branco
+const beersObject = cervejasApenas.map((array) => {
+  return { 
+    Nome: 'Cerveja ' + array,
+    Avaliacao: ''
+  }
+})
+console.log(''); console.log(`####### 4-Depois do map ##### `); console.log(beersObject); console.log('')
+*/
 
 
 module.exports = mapping
