@@ -143,6 +143,7 @@ companies.sort((a,b) => a - b) // Do menor para o maior
 companies.sort((a,b) => b - a) // Do maior para o menor
 */
 
+/*
 // 10-A Como funciona o método reduce
 const ages2 = [5, 15, 16, 20, 25, 40, 55, 43, 32, 52]
 
@@ -158,3 +159,20 @@ const ages3 = [5, 15, 16, 20, 25, 40, 55, 43, 32, 52]
 let ageSum2 = ages3.reduce((total, age) => total + age, 0)
 
 console.log(ageSum2)
+*/
+
+/*
+const index = companies.findIndex((company) => (company.name === 'Company One') && true)
+
+const index = companies.findIndex((company) => {
+  if (company.name === 'Company One') {
+    return true
+  }
+  else {
+    return false
+  }
+})
+
+console.log(index)
+console.log(companies[index])
+*/
