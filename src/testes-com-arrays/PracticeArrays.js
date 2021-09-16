@@ -145,24 +145,30 @@ console.log (notUnderage)
 // Adicione o campo avaliação com valor em branco [Precisa transformar em objeto]
 // No início do nome de cada uma, coloque: Cerveja. Exemplo: Cerveja Baly
 
-
+/*
 const cervejas = ['Baly', 'Brahma', 'Itaipava', 'Ales', 'Jurupinga', 'Cantina do Vale', 'Amstel']
 
 // 1
-console.log('########### Primeira Etapa ########### ')
-checkBeer = (beer) => {
-  
-  console.log(''); console.log('Valor recebido função checkBeer'); console.log(beer); 
+// console.log('########### Primeira Etapa ########### ')
 
-  if (beer != 'Cantina do Vale' && beer != 'Jurupinga') {
+module.exports = checkBeer = (beer) => {
+  
+  // console.log(''); console.log('Valor recebido função checkBeer'); console.log(beer); 
+
+  if (beer !== 'Cantina do Vale' || beer !== 'Jurupinga') {
+    console.log(beer)
     return true
+  }
+  else {
+    return false
   }
 }
 
-console.log(`##### 1-Lista antes do filter ######`); console.log(cervejas);
+// console.log(`##### 1-Lista antes do filter ######`); console.log(cervejas);
+
 
 const cervejasApenas = cervejas.filter(checkBeer)
-console.log(''); console.log(`##### 3-Depois do filter ####`); console.log(cervejasApenas);
+// console.log(''); console.log(`##### 3-Depois do filter ####`); console.log(cervejasApenas);
 
 // 2 - Transforme a array de string em array de objeto + Coloque cerveja no início no nome da cerveja + adicione um campo avaliação com valor em branco
 const beersObject = cervejasApenas.map((cerveja) => {
@@ -171,8 +177,6 @@ const beersObject = cervejasApenas.map((cerveja) => {
     Avaliacao: ''
   }
 })
-console.log(''); console.log(`####### 4-Depois do map ##### `); console.log(beersObject); console.log('')
+*/
 
-
-
-module.exports = mapping
+// console.log(''); console.log(`####### 4-Depois do map ##### `); console.log(beersObject); console.log('')
