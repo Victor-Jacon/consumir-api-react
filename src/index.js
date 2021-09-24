@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import { HistoryVsLink } from './react-router-dom/PageLearnReactRouterDom';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
       <App />
-    </React.StrictMode>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById('root')
 );
