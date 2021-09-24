@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter, Link, Switch, Route, useHistory, useLocation } from 'react-router-dom'
 
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <LocationObject />
+      <LocationPageViews />
     </>
   )
 }
@@ -106,6 +106,29 @@ export const LocationObject = () => {
         <button onClick={() => console.log(location)}>Show my location</button>
       </Container>
     </>
+  )
+}
+
+export const LocationPageViews = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    send()
+    
+  }, [location])
+
+  return (
+    <Container>
+      <Link to="/">Home</Link>
+      <Link to="/shop">Shop</Link>
+      <Link to="/purchase">Purchase</Link>
+      <p></p>
+      
+      <div>
+        <p>Debug area</p>
+        <button>Ver Page Views Usando Google Analytics. </button>
+      </div>
+    </Container>
   )
 }
 
