@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Switch, Route, useHistory, useLocation } from 'rea
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <LocationPageViews />
+      <UsingParams />
     </>
   )
 }
@@ -97,23 +97,35 @@ export const HistoryVsLink = () => {
 export const LocationObject = () => {
 
   const location = useLocation();
+  const history = useHistory();
 
   return (
     <>
       <Container>
         <Link to="/home">Home</Link>
         <Link to="/shop">Shop</Link>
-        <button onClick={() => console.log(location)}>Show my location</button>
+        <div>
+          <h1>Current Page: {location.pathname}</h1>
+          <button onClick={() => console.log(history.replace)}>Show my location</button>
+        </div>
+
+        <div>
+          <button onClick={() => history.goBack()}>Voltar</button>
+          <button onClick={() => history.goForward()}>Ir pra frente</button>
+          <button onClick={() => history.go(-2)}>Go Back 2x</button>
+          <p>Qtdes de páginas no histórico {history.length}</p>
+          <button onClick={() => history.replace('/amazonia')}>Replace</button>
+        </div>
       </Container>
     </>
   )
 }
 
+// [Google Analytics - Continuar (contagem de pageviews na api do google)]
 export const LocationPageViews = () => {
   const location = useLocation();
 
   useEffect(() => {
-    send()
     
   }, [location])
 
@@ -131,6 +143,100 @@ export const LocationPageViews = () => {
     </Container>
   )
 }
+
+// [Pagina 404 com Route]
+export const Page404 = () => {
+
+  const locationObjectPath = ['/home', '/shop']
+
+  return (
+    <div>
+      <Route path='/home' component={LocationObject} />
+      <Route component={Error404} />
+    </div>
+  )
+}
+
+export const Error404 = () => {
+  return (
+    <p>Página não encontrada</p>
+  )
+}
+
+// Rotas dinâmicas - 2 rotas usando o mesmo componente
+export const DynamicRoutes = () => {
+  return (
+    <Container>
+        <Link to='games'>Games</Link>
+        <Link to='sports'>Sports</Link>
+
+        <Switch>
+          <Route path='/games' component={DynamicRoutesCatalog}/>
+          <Route path='/sports' component={DynamicRoutesCatalog}/>
+        </Switch>
+    </Container>
+  )
+}
+
+export const DynamicRoutesCatalog = ({ match }) => {
+  return (
+    <>
+      <p>Página: {match.url}</p>
+      <button onClick={() => console.log(match)}>Ver objeto match</button>
+    </>
+  )
+}
+
+// Rotas Dinâmicas - Truque path
+export const PathTips = () => {
+  return (
+    <Container>
+      <Link to='petshop'>petshop</Link>
+      <Link to='supermarket'>supermarket</Link>
+      <Link to='fastfood'>fastfood</Link>
+      <Link to='babyclothing'>babyclothing</Link>
+
+      <Route path='/(petshop|supermarket|fastfood|babyclothing)' component={PathTipsExample} />
+      <Route component={Error404} />
+    </Container>
+  )
+}
+
+export const PathTipsExample = ({ match }) => {
+  return (
+    <Container>
+      <p>Params</p>
+      <p>Path: {match.path}</p>
+      <p>Url: {match.url}</p>
+    </Container>
+  )
+}
+
+// Como acessar o valor dos parâmetros passados por URL
+export const UsingParams = () => {
+  return (
+    <Container>
+      <Link to='/petshop/view'>petshop view</Link>
+      <Link to='/petshop/edit'>petshop edit</Link>
+      <Link to='/petshop/delete'>petshop delete</Link>
+
+      <Switch>
+        <Route path='/petshop/:action(view|edit)' component={UsingParamsExample} />
+        <Route component={Error404} />
+      </Switch>
+    </Container>
+  )
+}
+
+export const UsingParamsExample = ({ match }) => {
+  return (
+    <Container>
+      <p>Params: {match.params.id}</p>
+      <button onClick={() => console.log(match.params)}>Teste</button>
+    </Container>
+  )
+}
+
 
 const Container = styled.div`
   background-color: black;
