@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink } 
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <LinkComponentExample />
+      <OptionalMatchParam />
     </>
   )
 }
@@ -374,6 +374,29 @@ export const LinkComponentExample = () => {
 export const LinkComponent = ({ url }) => {
   return (
     <li><Link to={`/${url}`}>{url}</Link></li>
+  )
+}
+
+export const OptionalMatchParam = () => {
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/pictures'>Pictures</Link></li>
+      </ul>
+
+      <Switch>
+        <Route path="/home">Home</Route>
+        <Route path="/pictures/:pictureId?">
+          {({ match }) => (
+            <>
+              <p>Acessando valor do match.params (console) </p>
+              {console.log(match)}
+            </>
+          )}
+        </Route>
+      </Switch>
+    </Container>
   )
 }
 
