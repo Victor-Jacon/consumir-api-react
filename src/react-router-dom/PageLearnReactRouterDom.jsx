@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter, Link, Switch, Route, useHistory, useLocation } from 'react-router-dom'
+import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink } from 'react-router-dom'
 
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <UsingParams />
+      <PropChildren />
     </>
   )
 }
@@ -237,7 +237,95 @@ export const UsingParamsExample = ({ match }) => {
   )
 }
 
+export const RouteWithProps = () => {
+  return (
+    <Container>
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/messages">Messages</NavLink>
+      <NavLink to="/messages2">Messages2</NavLink>
+      <NavLink to="/messages3">Messages3</NavLink>
 
+      <Switch>
+        <Route exact path ='/home' component={RouteWithPropsExampleHome} />
+        <Route path='/messages' render={() => <RouteWithPropsExampleMessages numberOfPosts={3} /> } />
+        <Route path='/messages2' component={() => <RouteWithPropsExampleMessages numberOfPosts={3} /> } />
+        
+        <Route path='/messages3' render={() => <p> Escreva aqui sua mensagem </p> } />
+        <Route path='/messages3' render={() => <ShortHandComponent /> } />
+      </Switch>
+    </Container>
+  )
+}
+
+export const RouteWithPropsExampleHome = () => {
+  return (
+    <p>Welcome to your profile</p>
+  )
+}
+
+export const RouteWithPropsExampleMessages = ({numberOfPosts}) => {
+  return (
+    <p>Selecione um dos {numberOfPosts} posts</p>
+  )
+}
+
+export const ShortHandComponent = () => {
+  return (
+    <p>Escreva aqui sua mensagem</p>
+  )
+}
+
+export const SendingAllProps = () => {
+  return (
+    <Container>
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/profile">profile</NavLink>
+      <NavLink to="/bank">bank</NavLink>
+
+      <Switch>
+        <Route exact path ='/home' component={RouteWithPropsExampleHome} />
+        <Route path='/profile' render={(props) => <AllPropsExample {...props}/>}/>
+        <Route path='/bank' />
+      </Switch>
+    </Container>
+  )
+}
+
+export const AllPropsExample = ({ name = 'Jacobs', age, city, friends }) => {
+  return (
+    <>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+      <p>City: {city}</p>
+      <p>Friends: {friends}</p>
+    </>
+  )
+}
+
+export const PropChildren = () => {
+  return (
+    <Container>
+      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/profile">profile</NavLink>
+      <NavLink to="/bank">bank</NavLink>
+
+      <Switch>
+        <Route exact path ='/home' component={RouteWithPropsExampleHome} />
+        <Route path='/bank' />
+
+        <Route path='/profile'>
+          {() => (
+            <p>
+              Estou na pagina profile
+            </p>
+          )}
+        </Route>
+      </Switch>
+    </Container>
+  )
+}
+
+// Styled Components
 const Container = styled.div`
   background-color: black;
   color: white;
