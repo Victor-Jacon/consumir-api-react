@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink } 
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <PropChildren />
+      <LinkComponentExample />
     </>
   )
 }
@@ -314,7 +314,7 @@ export const PropChildren = () => {
         <Route path='/bank' />
 
         <Route path='/profile'>
-          {() => (
+          {({ match }) => (
             <p>
               Estou na pagina profile
             </p>
@@ -322,6 +322,58 @@ export const PropChildren = () => {
         </Route>
       </Switch>
     </Container>
+  )
+}
+
+export const MatchWithAnchorLink = () => {
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/pictures'>Pictures</Link></li>
+        <li>
+          <Route path="/videos">
+          {({ match }) => (
+            <a href="/videos" style={match ? { color: 'red' } : null}>Your Videos</a>
+          )}
+          </Route>
+        </li>
+      </ul>
+    </Container>
+  )
+}
+
+export const RouteComponentExample = () => {
+  return (
+    <Container>
+      <RouteComponent url={'Home'}/>
+      <RouteComponent url={'Restaurantes'}/>
+      <RouteComponent url={'Pedidos'}/>
+    </Container>
+  )
+}
+
+export const RouteComponent = ({ url }) => {
+  return (
+    <Route path={`/${url}`}>
+      <li><Link to={`/${url}`}>{url}</Link></li>
+    </Route>
+  )
+}
+
+export const LinkComponentExample = () => {
+  return (
+    <Container>
+      <LinkComponent url={'Home'}/>
+      <LinkComponent url={'Restaurantes'}/>
+      <LinkComponent url={'Pedidos'}/>
+    </Container>
+  )
+}
+
+export const LinkComponent = ({ url }) => {
+  return (
+    <li><Link to={`/${url}`}>{url}</Link></li>
   )
 }
 
