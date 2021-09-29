@@ -6,7 +6,7 @@ import queryString from 'query-string'
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <LocationSearchObjectifyAuto />
+      <LocationStateAndSearch />
     </>
   )
 }
@@ -480,6 +480,32 @@ export const LocationSearchObjectifyAuto = () => {
           </>
         )}
         </Route>     
+      </Switch>
+    </Container>
+  )
+}
+
+export const LocationStateAndSearch = () => {
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/songs'>Songs</Link></li>
+        <li>
+          <Link to={{ pathname: '/favoriteSongs', state: { song1: 'skillet - hero' } }}>
+              Favorite Songs
+          </Link>
+        </li>
+        <li>
+          <Link to={{ pathname: '/favoriteBands', search: 'favorite bands all time' }}>
+              Favorite Bands
+          </Link>
+        </li>
+      </ul>
+
+      <Switch>
+        <Route path="/home">Home</Route>
+        <Route path="/songs">Songs</Route> 
       </Switch>
     </Container>
   )
