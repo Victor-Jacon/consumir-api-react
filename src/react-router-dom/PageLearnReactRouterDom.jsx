@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink, Redirect } from 'react-router-dom'
+import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink, Redirect, Prompt, withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <RedirectExample />
+      <WithRouterExampleDepois />
     </>
   )
 }
@@ -584,6 +584,95 @@ export const RedirectExample = () => {
     </Container>
   )
 }
+
+export const PromptNavigation = () => {
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/carrinho'>Carrinho</Link></li>
+        <li><Link to='/finalizar-compra'>Finalizar Compra</Link></li>
+      </ul>
+
+      <Switch>
+        <Route path="/home">Home</Route> 
+        <Route path="/carrinho">Carrinho</Route> 
+        <Route path="/finalizar-compra" component={PromptNavigationExample} />
+      </Switch>
+    </Container>
+  )
+}
+ 
+export const PromptNavigationExample = () => {
+  return (
+    <Container>
+      <h1>Register</h1>
+      <Prompt when={true} message='Você precisa se cadastrar antes de finalizar a compra'/>
+    </Container>
+  )
+}
+
+// Abre: Entendendo withRouter
+export const WithRouterExampleAntes = () => {
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/carrinho'>Carrinho</Link></li>
+        <li><Link to='/lista-desejos'>Lista Desejos</Link></li>
+      </ul>
+
+      <Route path="/home">Home</Route> 
+      <Route path="/carrinho" component={WithRouterExampleCarrinho}/>
+      <Route path="/lista-desejos" component={WithRouterExampleListaDesejos} />
+    </Container>
+  )
+}
+
+export const WithRouterExampleCarrinho_ = ({ history }) => (
+  <>
+    <p>Carrinho</p>
+    <button onClick={() => console.log(history)}>Veja o location</button>
+  </>
+)
+
+export const WithRouterExampleListaDesejos_ = ({ history }) => (
+  <>
+    <p>Lista Desejos</p>
+    <button onClick={() => console.log(history)}>Veja o location</button>
+  </>
+)
+
+export const WithRouterExampleDepois = () => {
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/carrinho'>Carrinho</Link></li>
+        <li><Link to='/lista-desejos'>Lista Desejos</Link></li>
+      </ul>
+      <>
+        <>
+          <Route path="/home">Home</Route> 
+        </>
+        <>
+          <WithRouterExampleListaDesejos />
+          <WithRouterExampleListaDesejos.WrappedComponent />
+        </>
+
+        <>
+          <WithRouterExampleCarrinho />
+          <WithRouterExampleCarrinho.WrappedComponent />
+        </>
+      </>
+    </Container>
+  )
+}
+
+const WithRouterExampleListaDesejos = withRouter(WithRouterExampleListaDesejos_)
+const WithRouterExampleCarrinho = withRouter(WithRouterExampleCarrinho_)
+
+// Fecha: Entendendo withRouter
 
 // Styled Components
 const Container = styled.div`
