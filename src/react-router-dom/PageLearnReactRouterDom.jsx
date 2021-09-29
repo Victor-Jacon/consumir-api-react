@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink } from 'react-router-dom'
+import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink, Redirect } from 'react-router-dom'
 import queryString from 'query-string'
 
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <HistoryPushParameters />
+      <RedirectExample />
     </>
   )
 }
@@ -560,6 +560,26 @@ export const HistoryPushParameters = () => {
         <Route path="/episode2">episode2</Route> 
         <Route path="/episode3">episode3</Route> 
         <Route path="/episode4">episode4</Route> 
+      </Switch>
+    </Container>
+  )
+}
+
+export const RedirectExample = () => {
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/inicio'>Inicio</Link></li>
+        <li><Link to='/episode1'>episode1</Link></li>
+      </ul>
+
+      <Switch>
+        <Route path="/episode1">episode1</Route>
+        <Route path="/episode2">episode2</Route> 
+        <Route path="/episode4">episode3</Route> 
+        <Route path="/inicio" render={() => <Redirect push to='/home'/>}/>
+        <Redirect from='/inicio' to='/home' />
       </Switch>
     </Container>
   )
