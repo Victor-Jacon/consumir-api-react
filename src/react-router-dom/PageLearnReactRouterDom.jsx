@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink, Redirect, Prompt, withRouter } from 'react-router-dom'
+import { HashRouter, BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink, Redirect, Prompt, withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
 const PageLearnReactRouterDom = () => {
