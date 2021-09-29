@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter, Link, Switch, Route, useHistory, useLocation, NavLink } from 'react-router-dom'
+import queryString from 'query-string'
 
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <OptionalMatchParam />
+      <LocationSearchObjectifyAuto />
     </>
   )
 }
@@ -395,6 +396,90 @@ export const OptionalMatchParam = () => {
             </>
           )}
         </Route>
+      </Switch>
+    </Container>
+  )
+}
+
+export const LocationSearchObjectify = () => {
+
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/order'>Order</Link></li>
+      </ul>
+
+      <Switch>
+        <Route path="/home">
+          Home
+        </Route>
+        <Route path="/order">
+        {({ location }) => (
+          <>
+            {console.log('Location', location)}
+            {console.log('location treated:',
+              location.search
+                .replace('?', '')
+                .split('&')
+                .reduce((acc, item) => {
+                  const [key, value] = item.split('=')
+                  if (acc[key]) {  
+                    acc[key] = [acc[key]].concat(value)
+                  } else {
+                    acc[key] = value
+                  }
+                  return acc
+                }, {})
+            )}
+            <p>Food: </p>
+            <p>Drink: </p>
+            <p>Total: </p>
+          </>
+        )}
+        </Route>     
+      </Switch>
+    </Container>
+  )
+}
+
+export const LocationSearchObjectifyAuto = () => {
+
+  const location = useLocation()
+  const [query, setQuery] = useState()
+  
+  useEffect(() => {
+    const parsed = queryString.parse(location.search);
+    console.log(parsed)
+    setQuery(parsed)
+    return parsed
+  }, [])
+
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/order'>Order</Link></li>
+      </ul>
+
+      <Switch>
+        <Route path="/home">
+          Home
+        </Route>
+        <Route path="/order">
+        {({ location }) => (
+          <>
+            {console.log('Location', location)}
+            {query &&
+              <>
+                <p>Food: {query.food}</p>
+                <p>Drink: {query.drink}</p>
+                <p>Total: {query.total}</p>
+              </>
+            }
+          </>
+        )}
+        </Route>     
       </Switch>
     </Container>
   )
