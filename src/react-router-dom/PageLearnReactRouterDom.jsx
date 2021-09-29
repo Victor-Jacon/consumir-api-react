@@ -6,7 +6,7 @@ import queryString from 'query-string'
 const PageLearnReactRouterDom = () => {
   return (
     <>
-      <LocationStateAndSearch />
+      <HistoryPushParameters />
     </>
   )
 }
@@ -506,6 +506,60 @@ export const LocationStateAndSearch = () => {
       <Switch>
         <Route path="/home">Home</Route>
         <Route path="/songs">Songs</Route> 
+      </Switch>
+    </Container>
+  )
+}
+
+export const HistoryPathAndLocation = () => {
+
+  const [nextEpisode, setNextEpisode] = useState(1)
+  const history = useHistory()
+
+  const changeEpisode = (currentEpisode) => {
+    history.push(`/episode${nextEpisode+1}`)
+    setNextEpisode(nextEpisode+1)
+  }
+
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/episode1' onClick={() => setNextEpisode(1)}>episode1</Link></li>
+        <button onClick={() => changeEpisode(nextEpisode)}>Next Episode</button>
+      </ul>
+
+      <Switch>
+        <Route path="/episode1">episode1</Route>
+        <Route path="/episode2">episode2</Route> 
+        <Route path="/episode3">episode3</Route> 
+        <Route path="/episode4">episode4</Route> 
+      </Switch>
+    </Container>
+  )
+}
+
+export const HistoryPushParameters = () => {
+
+  const [nextEpisode, setNextEpisode] = useState(1)
+  const history = useHistory()
+
+  const changeEpisode = (currentEpisode) => {
+    history.push(`/episode${nextEpisode+1}`, { watching: `Episode${nextEpisode}`})
+    setNextEpisode(nextEpisode+1)
+  }
+
+  return (
+    <Container>
+      <ul>
+        <li><Link to='/episode1' onClick={() => setNextEpisode(1)}>episode1</Link></li>
+        <button onClick={() => changeEpisode(nextEpisode)}>Next Episode</button>
+      </ul>
+
+      <Switch>
+        <Route path="/episode1">episode1</Route>
+        <Route path="/episode2">episode2</Route> 
+        <Route path="/episode3">episode3</Route> 
+        <Route path="/episode4">episode4</Route> 
       </Switch>
     </Container>
   )
