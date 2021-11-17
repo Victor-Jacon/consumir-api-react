@@ -1,11 +1,10 @@
 // Filtre as pessoas que tem idade igual ou maior que 21 anos.
-/*
 const ages = [5, 15, 16, 20, 25, 40, 55, 43, 32, 52]
 console.log('Antes de filtrar: '); console.log(ages)
 
 const canDrink = ages.filter(age => age >= 21)
 console.log(''); console.log('Depois de filtrar: '); console.log(canDrink)
-*/
+
 //
 
 
@@ -22,7 +21,7 @@ const companies = [
   ];
 
 
-/*
+
 //  1-A filter + função separada
 checkRetailCompanies = (company) => {
   if (company.category === 'Retail') {
@@ -61,9 +60,9 @@ const companyNames2 = companies.map((company) => {
 })
 
 console.log(companyNames2)
-*/
 
-/*
+
+
 // 6 - Criar uma array de strings concatenadas. 
 // Concatena Empresa, Data de início, e data de fechamento da empresa
 const concatStrings = companies.map((company) => {
@@ -74,9 +73,9 @@ console.log(concatStrings)
 
 const concatStrings2 = companies.map(company => `${company.name} [${company.start}-${company.end}]`)
 console.log(concatStrings2)
-*/
 
-/*
+
+
 // 7-A Usando Maps aninhados
 // Se a empresa for de tecnologia, adicione o campo owner: jeff bezos, caso contrário, adicione owner: ''
 // Se a empresa tiver menos de 5 anos, adicione o campo tipo: startup, caso contrário, adicione tipo: 'normal company'
@@ -108,9 +107,9 @@ const techStartups2 = companies
   .map(company => (company.end - company.start <= 5) && {...company, type: 'startup'} || {...company, type: 'normal company'})
 
 console.log(techStartups2)
-*/
 
-/*
+
+
 // 8-A Organize as empresas da array companies pela data de criação ela.
 // O método sort itera de uma forma diferente, ele pega 2 itens da array, compara, e retorna 1 ou -1
 // Se retornar 1, ele sobe na ordenação, fica em primeiro
@@ -135,15 +134,15 @@ console.log(sortedCompanies2)
 // 8-C Sintaxe reduzida
 const sortedCompanies3 = companies.sort((c1, c2) => (c1.start > c2.start) ? 1 : -1)
 console.log(sortedCompanies3)
-*/
 
-/*
+
+
 // 9- Como usar o método sort para organizar de forma rapida uma array de numeros ou letras
 companies.sort((a,b) => a - b) // Do menor para o maior
 companies.sort((a,b) => b - a) // Do maior para o menor
-*/
 
-/*
+
+
 // 10-A Como funciona o método reduce
 const ages2 = [5, 15, 16, 20, 25, 40, 55, 43, 32, 52]
 
@@ -159,9 +158,7 @@ const ages3 = [5, 15, 16, 20, 25, 40, 55, 43, 32, 52]
 let ageSum2 = ages3.reduce((total, age) => total + age, 0)
 
 console.log(ageSum2)
-*/
 
-/*
 const index = companies.findIndex((company) => (company.name === 'Company One') && true)
 
 const index = companies.findIndex((company) => {
@@ -175,4 +172,3 @@ const index = companies.findIndex((company) => {
 
 console.log(index)
 console.log(companies[index])
-*/

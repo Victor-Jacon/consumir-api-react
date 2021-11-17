@@ -1,4 +1,4 @@
-/*
+
 // Recebe uma array + faz um loop por cada um dos itens, mostrando na tela
 const counters = ['counter1', 'counter2']
 
@@ -48,9 +48,9 @@ restauranteSushi.shift()
 restauranteSushi.push('okami')
 console.log(`Os melhores restaurantes em ordem são: ${restauranteSushi}`)
 console.log(``)
-*/
 
-/*
+
+
 // Ordene a array de objetos de acordo com a melhor avaliação
 const pizzarias = [
   {
@@ -123,9 +123,7 @@ pizzarias.sort((a,b) => {
 console.log(`Ordenando da mais próxima para a mais distante:`)
 console.log(pizzarias)
 console.log(``)
-*/
 
-/*
 // Remova as idades abaixo de 18 anos
 const ages = [32, 33, 16, 40];
 console.log('Antes de remover')
@@ -139,13 +137,12 @@ const notUnderage = ages.filter(checkAdult)    // Returns [32, 33, 40]
 
 console.log('Depois de remover')
 console.log (notUnderage)
-*/
 
 // Remova as bebidas que não são cervejas
 // Adicione o campo avaliação com valor em branco [Precisa transformar em objeto]
 // No início do nome de cada uma, coloque: Cerveja. Exemplo: Cerveja Baly
 
-/*
+
 const cervejas = ['Baly', 'Brahma', 'Itaipava', 'Ales', 'Jurupinga', 'Cantina do Vale', 'Amstel']
 
 // 1
@@ -177,6 +174,5 @@ const beersObject = cervejasApenas.map((cerveja) => {
     Avaliacao: ''
   }
 })
-*/
 
 // console.log(''); console.log(`####### 4-Depois do map ##### `); console.log(beersObject); console.log('')
